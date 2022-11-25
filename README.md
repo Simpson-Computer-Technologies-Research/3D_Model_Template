@@ -1,4 +1,5 @@
 # Three.js 3D Model Template
+![Capture](https://user-images.githubusercontent.com/75189508/204062932-d09f590a-377d-49b0-899d-e8e2697471f3.PNG)
 
 # License
 MIT License
