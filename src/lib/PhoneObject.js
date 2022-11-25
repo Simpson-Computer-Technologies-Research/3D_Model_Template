@@ -1,5 +1,5 @@
 import { GLTFLoader, Palette, THREE, GSAP } from "$lib/Imports.js";
-import { DRACO_LOADER, Controls as OrbitalControls } from "$lib/defaults/Scene.js";
+import { DRACO_LOADER } from "$lib/defaults/Scene.js";
 
 // Load the 3D Object
 const GLTF_LOADER = new GLTFLoader(new THREE.LoadingManager(
@@ -12,11 +12,11 @@ const GLTF_LOADER = new GLTFLoader(new THREE.LoadingManager(
 GLTF_LOADER.setDRACOLoader(DRACO_LOADER);
 
 // Load the phone model with GSAP
-export const LoadPhoneObjectWithGSAP = async (Scene, Wallpaper) => GLTF_LOADER.load('./iphone.gltf', async (model) => {
+export const LoadPhoneObjectWithGSAP = async (Scene) => GLTF_LOADER.load('./iphone.gltf', async (model) => {
 	model.material = new THREE.MeshPhysicalMaterial({ roughness: 0, metalness: 1 });
 
 	// Set the new model variable
-	model = Palette.UpdatePhoneWallpaper(model.scene, Wallpaper);
+	model = model.scene;
 	model.scale.set(1.3, 1.3);
 	model.rotation.set(-0.3, 2.9, 0);
 	Scene.add(model);
@@ -31,17 +31,13 @@ export const LoadPhoneObjectWithGSAP = async (Scene, Wallpaper) => GLTF_LOADER.l
 					window.scrollY / (document.body.offsetHeight - window.innerHeight)
 				) * 100;
 
-				// Posts Wallpaper
+				// Home Wallpaper
 				if (SCROLL_PERCENTAGE < 20 & Palette.IsWallpaperChanged) 
-					model = Palette.UpdatePhoneWallpaper(model, Palette.Wallpapers.Posts);
+					model = Palette.UpdatePhoneWallpaper(model, Palette.Wallpapers.Home);
 				
-				// Polls Wallpaper
+				// Home Wallpaper
 				else if (SCROLL_PERCENTAGE > 20 & SCROLL_PERCENTAGE < 50 & !Palette.IsWallpaperChanged) 
-					model = Palette.UpdatePhoneWallpaper(model, Palette.Wallpapers.Polls);
-				
-				// Maps Wallpaper
-				else if (SCROLL_PERCENTAGE > 50 & Palette.IsWallpaperChanged) 
-					model = Palette.UpdatePhoneWallpaper(model, Palette.Wallpapers.Maps);
+					model = Palette.UpdatePhoneWallpaper(model, Palette.Wallpapers.Home);
 			}
 		});
 });
