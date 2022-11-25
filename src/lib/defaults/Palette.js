@@ -24,7 +24,7 @@ export const ToLightMode = () => {
 // Convert the color to dark mode
 export const ToDarkMode = () => {
     Wallpapers = {
-        Posts: DARK_HOME_WALLPAPER,
+        Home: DARK_HOME_WALLPAPER,
     }
 }
 
