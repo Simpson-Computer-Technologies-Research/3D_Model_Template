@@ -2,14 +2,13 @@
 	// Imports
 	import { LoadPhoneObjectWithGSAP } from "$lib/PhoneObject.js";
 	import { SetScene } from "$lib/defaults/Scene.js";
-	import { Palette } from "$lib/Imports.js";
 	import { onMount } from "svelte";
     
 	// When the user loads up the website...
 	let ThreeObject;
     onMount(async () => {
 		let Scene = await SetScene(ThreeObject);
-		await LoadPhoneObjectWithGSAP(Scene, Palette.Wallpapers.Posts);
+		await LoadPhoneObjectWithGSAP(Scene);
     });
 </script>
 
